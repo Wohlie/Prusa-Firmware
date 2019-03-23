@@ -112,8 +112,8 @@
 #define DEFAULT_SAFETYTIMER_TIME_MINS 30
 
 // Filament sensor
-#define FILAMENT_SENSOR
-#define PAT9125
+//#define FILAMENT_SENSOR
+//#define PAT9125
 
 
 #define DEBUG_DCODE3
