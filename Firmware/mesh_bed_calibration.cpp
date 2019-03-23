@@ -3093,7 +3093,7 @@ void mbl_settings_init() {
 	}
 	mbl_z_probe_nr = eeprom_read_byte((uint8_t*)EEPROM_MBL_PROBE_NR);
 	if (mbl_z_probe_nr == 0xFF) {
-		mbl_z_probe_nr = 3;
+		mbl_z_probe_nr = Z_PROBE_ITERATIONS_MIN;
 		eeprom_update_byte((uint8_t*)EEPROM_MBL_PROBE_NR, mbl_z_probe_nr);
 	}
 }

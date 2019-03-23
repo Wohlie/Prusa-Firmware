@@ -280,6 +280,9 @@
 #define Z_HIGH_POWER 200
 #endif
 
+#define Z_PROBE_ITERATIONS_MIN 10
+#define Z_PROBE_ITERATIONS_MAX 32
+
 /*------------------------------------
  BED SETTINGS
  *------------------------------------*/

@@ -167,7 +167,7 @@ CardReader card;
 unsigned long PingTime = _millis();
 unsigned long NcTime;
 
-int mbl_z_probe_nr = 3; //numer of Z measurements for each point in mesh bed leveling calibration
+int mbl_z_probe_nr = Z_PROBE_ITERATIONS_MIN; //numer of Z measurements for each point in mesh bed leveling calibration
 
 //used for PINDA temp calibration and pause print
 #define DEFAULT_RETRACTION    1
@@ -4045,7 +4045,7 @@ if((eSoundMode==e_SOUND_MODE_LOUD)||(eSoundMode==e_SOUND_MODE_ONCE))
 
             feedrate = homing_feedrate[Z_AXIS];
 
-            find_bed_induction_sensor_point_z(-10.f, 3);
+            find_bed_induction_sensor_point_z(-10.f);
 
 			printf_P(_N("%S X: %.5f Y: %.5f Z: %.5f\n"), _T(MSG_BED), _x, _y, _z);
 
@@ -4376,11 +4376,11 @@ if((eSoundMode==e_SOUND_MODE_LOUD)||(eSoundMode==e_SOUND_MODE_ONCE))
 			nMeasPoints = eeprom_read_byte((uint8_t*)EEPROM_MBL_POINTS_NR);
 		}
 
-		uint8_t nProbeRetry = 3;
+		uint8_t nProbeRetry = Z_PROBE_ITERATIONS_MIN;
 		if (code_seen('R')) {
 			nProbeRetry = code_value_uint8();
-			if (nProbeRetry > 10) {
-				nProbeRetry = 10;
+			if (nProbeRetry > Z_PROBE_ITERATIONS_MAX) {
+				nProbeRetry = Z_PROBE_ITERATIONS_MAX;
 			}
 		}
 		else {
@@ -8372,7 +8372,7 @@ void bed_analysis(float x_dimension, float y_dimension, int x_points_num, int y_
 		plan_buffer_line(current_position[X_AXIS], current_position[Y_AXIS], current_position[Z_AXIS], current_position[E_AXIS], XY_AXIS_FEEDRATE, active_extruder);
 		st_synchronize();
 
-		if (!find_bed_induction_sensor_point_z(-10.f)) { //if we have data from z calibration max allowed difference is 1mm for each point, if we dont have data max difference is 10mm from initial point  
+		if (!find_bed_induction_sensor_point_z(-10.f)) { //if we have data from z calibration max allowed difference is 1mm for each point, if we dont have data max difference is 10mm from initial point
 			break;
 			card.closefile();
 		}
