@@ -1,6 +1,7 @@
 .settings
 .project
 .cproject
+.idea
 Debug
 Firmware/Configuration_prusa.h
 Firmware/Doc
