@@ -6720,7 +6720,7 @@ static void lcd_mesh_bed_leveling_settings()
 	MENU_ITEM_BACK_P(_T(MSG_SETTINGS));
         if(points_nr == 3) MENU_ITEM_FUNCTION_P(_i("Mesh         [3x3]"), mbl_mesh_toggle); ////MSG_MESH_3x3 c=18
         else			   MENU_ITEM_FUNCTION_P(_i("Mesh         [7x7]"), mbl_mesh_toggle); ////MSG_MESH_7x7 c=18
-	MENU_ITEM_EDIT_int3_P(_i("Z-probe nr."), &mbl_z_probe_nr, 1, 5);
+	MENU_ITEM_EDIT_int3_P(_i("Z-probe nr."), &mbl_z_probe_nr, Z_PROBE_ITERATIONS_MIN, Z_PROBE_ITERATIONS_MAX);
 	if (points_nr == 7) {
 		if (magnet_elimination) MENU_ITEM_FUNCTION_P(_i("Magnets comp. [On]"), mbl_magnets_elimination_toggle); ////MSG_MAGNETS_COMP_ON c=18
 		else				    MENU_ITEM_FUNCTION_P(_i("Magnets comp.[Off]"), mbl_magnets_elimination_toggle); ////MSG_MAGNETS_COMP_OFF c=18
