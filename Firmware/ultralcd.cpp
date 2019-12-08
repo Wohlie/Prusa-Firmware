@@ -6102,7 +6102,7 @@ void unload_filament()
 
 	//		extr_unload2();
 
-	current_position[E_AXIS] -= 45;
+	current_position[E_AXIS] -= 65;
 	plan_buffer_line(current_position[X_AXIS], current_position[Y_AXIS], current_position[Z_AXIS], current_position[E_AXIS], 5200 / 60, active_extruder);
 	st_synchronize();
 	current_position[E_AXIS] -= 15;
